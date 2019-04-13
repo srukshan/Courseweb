@@ -1,6 +1,14 @@
 # React-Project
 
-One Paragraph of project description goes here
+This Application Framework Group Project is a Web application that serves as a Student and Instructor information system. System functionality as follows;
+1.  There are three user roles admin, instructor and students.
+2.  Admins can create other admins and instructors. Students need to sign up to the system.
+3.  Once admin creates an instructor, it should be notified to the instructor via email.
+4.  Admins can create courses and add instructors to course. Instructors should get notifications on new course creations when logged in to the system. After instructor accept the course Students can join the course.
+5.  Instructors can create assignments and exams for a course with due dates. Student should get notifications on these. Instructor can edit these dues dates (only to a later date than the original one).
+6. Students can upload files for assignments and exams before the due date. Instructor should be able to view these files and enter marks for the assignment or exam. Student will get notified on these markings.
+7.  System should be secured and cannot be accessed without proper authentication.
+8.  Authorization should be maintained and students cannot create, edit assignments or exams.
 
 ## Getting Started
 
@@ -11,7 +19,9 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Give examples
+Eclipse EE
+NodeJS
+Node Package Manager
 ```
 
 ### Installing
@@ -34,7 +44,14 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Features
 
-List of Features to be implemented
+1.  There are three user roles admin, instructor and students.
+2.  Admins can create other admins and instructors. Students need to sign up to the system.
+3.  Once admin creates an instructor, it should be notified to the instructor via email.
+4.  Admins can create courses and add instructors to course. Instructors should get notifications on new course creations when logged in to the system. After instructor accept the course Students can join the course.
+5.  Instructors can create assignments and exams for a course with due dates. Student should get notifications on these. Instructor can edit these dues dates (only to a later date than the original one).
+6. Students can upload files for assignments and exams before the due date. Instructor should be able to view these files and enter marks for the assignment or exam. Student will get notified on these markings.
+7.  System should be secured and cannot be accessed without proper authentication.
+8.  Authorization should be maintained and students cannot create, edit assignments or exams.
 
 ## Deployment
 
@@ -42,9 +59,11 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [React](https://reactjs.org/docs/) - The web Frontend framework used
+* [Node JS](https://nodejs.org/en/docs/) - The web Frontend server
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/) - Web Backend Restful API Server 
+* [MongoDB](https://docs.mongodb.com/) - Database
 
 ## Contributing
 
