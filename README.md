@@ -1,4 +1,4 @@
-# React-Project
+# Courseweb
 
 This Application Framework Group Project is a Web application that serves as a Student and Instructor information system. System functionality as follows;
 1.  There are three user roles admin, instructor and students.
