@@ -1,10 +1,10 @@
 {
-  "name": "coursewebRest",
+  "name": "coursewebrest",
   "version": "0.1.0",
   "description": "Restful API Server for the Courseweb",
   "main": "server.js",
   "scripts": {
-    "client-install": "cd client && npm install",
+    "install": "npm install && cd client && npm install",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
