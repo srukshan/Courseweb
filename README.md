@@ -82,7 +82,6 @@ cd Courseweb && npm run prod
 
 - [React](https://reactjs.org/docs/) - The web Frontend framework used
 - [Node JS](https://nodejs.org/en/docs/) - The web Frontend server
-- [Maven](https://maven.apache.org/) - Dependency Management
 -
 - [Express](https://docs.spring.io/spring-boot/docs/current/reference/html/) - Web Backend Restful API Server
 - [MongoDB](https://docs.mongodb.com/) - Database
