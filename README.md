@@ -38,7 +38,7 @@ git clone http://github.com/srukshan/Courseweb
 And then enter this command in the terminal
 
 ```
-cd Courseweb && npm install && npm run client-install
+cd Courseweb && npm run install
 ```
 
 Run the project by executing the following command
@@ -69,7 +69,7 @@ git clone http://github.com/srukshan/Courseweb
 And then enter this command in the terminal
 
 ```
-cd Courseweb && npm install && npm run client-install
+cd Courseweb && npm run install
 ```
 
 Run the project by executing the following command
