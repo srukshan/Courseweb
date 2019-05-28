@@ -4,7 +4,7 @@
   "description": "Restful API Server for the Courseweb",
   "main": "server.js",
   "scripts": {
-    "install": "npm install && cd client && npm install",
+    "install": "npm install;cd client && npm install",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",

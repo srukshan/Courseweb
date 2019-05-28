@@ -1,17 +1,22 @@
-const express = require('express');
+const Express       = require("express");
+const BodyParser    = require("body-parser");
+const Routes        = require("./Routes");
+const Cors          = require("cors");
 
-const app = express();
+const app = Express();
 
-app.get('/api/customers', (req, res) => {
-  const customers = [
-    {id: 1, firstName: 'John', lastName: 'Doe'},
-    {id: 2, firstName: 'Brad', lastName: 'Traversy'},
-    {id: 3, firstName: 'Mary', lastName: 'Swanson'},
-  ];
+app.use(Cors());
 
-  res.json(customers);
-});
+app.use(BodyParser.urlencoded({ extended: false }));
+app.use(BodyParser.json());
+app.use('/', Routes);
 
 const port = 5000;
 
-app.listen(port, () => `Server running on port ${port}`);
+app.listen(port, (err) => {
+  if(err) {
+      console.log(err);
+      process.exit(-1);
+  }
+  console.log(`Server listen port ${port}`);
+});
