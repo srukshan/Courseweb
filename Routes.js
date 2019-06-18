@@ -1,7 +1,7 @@
 var Express         = require("express");
 var Routes          = Express.Router();
-var UserRoute       = require('./src/User/User.Route');
+var NoteRoute       = require('./src/Routes/Note.Route');
 
-Routes.use('/users/',UserRoute);
+Routes.use('/notes/', NoteRoute);
 
 module.exports = Routes;
