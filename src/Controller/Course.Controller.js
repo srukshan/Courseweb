@@ -2,6 +2,13 @@
 var mongoose = require('../Schema/Schema.Mapper');
 var CourseSchema = mongoose.model('Course');
 
+// End points                   Request     Body            Authentication
+// ------------------------------------------------------------------------------------
+// /api/courses                 GET                         no auth
+// /api/course/{id}             GET                         no auth
+// /api/courses                 POST        { name }        auth admin
+// /api/courses/{id}/accept     PUT                         auth instructor
+
 module.exports = new function () {
     this.insert = (data) => {
         return new Promise((resolve, reject) => {

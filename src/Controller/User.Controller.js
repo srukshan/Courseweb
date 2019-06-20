@@ -2,6 +2,8 @@
 var mongoose = require('../Schema/Schema.Mapper');
 var UserSchema = mongoose.model('User');
 
+// Required to implement findByToken(key) function
+
 module.exports = new function () {
     this.insert = (data) => {
         return new Promise((resolve, reject) => {
