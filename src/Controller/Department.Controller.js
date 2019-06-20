@@ -1,22 +1,17 @@
 // @ts-check
 var mongoose = require('../Schema/Schema.Mapper');
-var AssessmentSchema = mongoose.model('Assessment');
+var DepartmentSchema = mongoose.model('Department');
 
 module.exports = new function () {
     this.insert = (data) => {
         return new Promise((resolve, reject) => {
-            var Assessment = new AssessmentSchema({
-                name: data.name,
-                type: data.type,
-                dueDate: data.dueDate,
-                createdDate: data.createdDate,
-                AssessmentId: data.AssessmentId,
-                courseId: data.courseId
+            var Department = new DepartmentSchema({
+                name: data.name
             })
-            Assessment.save().then(() => {
+            Department.save().then(() => {
                 resolve({
                     status: 200,
-                    message: "Added new Assessment"
+                    message: "Added new Department"
                 })
             }).catch(err => {
                 reject({
@@ -28,12 +23,12 @@ module.exports = new function () {
     }
     this.update = (id, data) => {
         return new Promise((resolve, reject) => {
-            AssessmentSchema.update({
+            DepartmentSchema.update({
                 _id: id
             }, data).then(() => {
                 resolve({
                     status: 200,
-                    message: "Assessment Updated"
+                    message: "Department Updated"
                 })
             }).catch(err => {
                 reject({
@@ -45,7 +40,7 @@ module.exports = new function () {
     }
     this.getAll = () => {
         return new Promise((resolve, reject) => {
-            AssessmentSchema.find().exec().then((data) => {
+            DepartmentSchema.find().exec().then((data) => {
                 resolve({
                     status: 200,
                     data: data
@@ -60,10 +55,10 @@ module.exports = new function () {
     }
     this.getById = (id) => {
         return new Promise((resolve, reject) => {
-            AssessmentSchema.findById(id).exec().then(Assessment => {
+            DepartmentSchema.findById(id).exec().then(Department => {
                 resolve({
                     status: 200,
-                    data: Assessment
+                    data: Department
                 })
             }).catch(err => {
                 reject({
@@ -75,10 +70,10 @@ module.exports = new function () {
     }
     this.delete = (id) => {
         return new Promise((resolve, reject) => {
-            AssessmentSchema.findByIdAndDelete(id).exec().then(() => {
+            DepartmentSchema.findByIdAndDelete(id).exec().then(() => {
                 resolve({
                     status: 200,
-                    message: 'Assessment Deleted'
+                    message: 'Department Deleted'
                 })
             }).catch(err => {
                 reject({

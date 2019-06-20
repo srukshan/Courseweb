@@ -1,22 +1,20 @@
 // @ts-check
 var mongoose = require('../Schema/Schema.Mapper');
-var AssessmentSchema = mongoose.model('Assessment');
+var NotificationSchema = mongoose.model('Notification');
 
 module.exports = new function () {
     this.insert = (data) => {
         return new Promise((resolve, reject) => {
-            var Assessment = new AssessmentSchema({
-                name: data.name,
-                type: data.type,
-                dueDate: data.dueDate,
-                createdDate: data.createdDate,
-                AssessmentId: data.AssessmentId,
-                courseId: data.courseId
+            var Notification = new NotificationSchema({
+                userIds: data.userIds,
+                title: data.title,
+                content: data.content,
+                timeStamp: data.timeStamp
             })
-            Assessment.save().then(() => {
+            Notification.save().then(() => {
                 resolve({
                     status: 200,
-                    message: "Added new Assessment"
+                    message: "Added new Notification"
                 })
             }).catch(err => {
                 reject({
@@ -28,12 +26,12 @@ module.exports = new function () {
     }
     this.update = (id, data) => {
         return new Promise((resolve, reject) => {
-            AssessmentSchema.update({
+            NotificationSchema.update({
                 _id: id
             }, data).then(() => {
                 resolve({
                     status: 200,
-                    message: "Assessment Updated"
+                    message: "Notification Updated"
                 })
             }).catch(err => {
                 reject({
@@ -45,7 +43,7 @@ module.exports = new function () {
     }
     this.getAll = () => {
         return new Promise((resolve, reject) => {
-            AssessmentSchema.find().exec().then((data) => {
+            NotificationSchema.find().exec().then((data) => {
                 resolve({
                     status: 200,
                     data: data
@@ -60,10 +58,10 @@ module.exports = new function () {
     }
     this.getById = (id) => {
         return new Promise((resolve, reject) => {
-            AssessmentSchema.findById(id).exec().then(Assessment => {
+            NotificationSchema.findById(id).exec().then(Notification => {
                 resolve({
                     status: 200,
-                    data: Assessment
+                    data: Notification
                 })
             }).catch(err => {
                 reject({
@@ -75,10 +73,10 @@ module.exports = new function () {
     }
     this.delete = (id) => {
         return new Promise((resolve, reject) => {
-            AssessmentSchema.findByIdAndDelete(id).exec().then(() => {
+            NotificationSchema.findByIdAndDelete(id).exec().then(() => {
                 resolve({
                     status: 200,
-                    message: 'Assessment Deleted'
+                    message: 'Notification Deleted'
                 })
             }).catch(err => {
                 reject({

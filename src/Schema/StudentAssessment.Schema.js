@@ -1,5 +1,5 @@
-var mongoose 		= require('mongoose');
-const Schema        = mongoose.Schema;
+var mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const StudentAssessmentSchema = new Schema({
     fileName: {
