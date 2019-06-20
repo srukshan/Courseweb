@@ -1,16 +1,40 @@
 // @ts-check
-var mongoose = require('../Schema/Schema.Mapper');
-var AssessmentSchema = mongoose.model('Assessment');
+const mongoose = require('../Schema/Schema.Mapper');
+const AssessmentSchema = mongoose.model('Assessment');
+const UserController = require('./User.Controller')
+const CourseController = require('./Course.Controller')
+
+// Required to check the references whether they exist before inserting or updating
+//    1. Assessment - Done
+//    2. Course - Done
+// Set createdDate to Date.now() - Done
 
 module.exports = new function () {
     this.insert = (data) => {
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
+            let userId = data.userId
+            let courseId = data.courseId
+
+            UserController.getById(userId).catch(err => {
+                reject({
+                    status: 500,
+                    message: `Error:- ${err}`
+                })
+            })
+
+            CourseController.getById(courseId).catch(err => {
+                reject({
+                    status: 500,
+                    message: `Error:- ${err}`
+                })
+            })
+
             var Assessment = new AssessmentSchema({
                 name: data.name,
                 type: data.type,
                 dueDate: data.dueDate,
-                createdDate: data.createdDate,
-                AssessmentId: data.AssessmentId,
+                createdDate: new Date(),
+                userId: data.userId,
                 courseId: data.courseId
             })
             Assessment.save().then(() => {
