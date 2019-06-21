@@ -23,4 +23,4 @@ const StudentAssessmentSchema = new Schema({
         require: true
     }
 });
-module.exports = StudentAssessmentSchema
+module.exports = mongoose.model('StudentAssessment', StudentAssessmentSchema)

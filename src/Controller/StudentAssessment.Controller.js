@@ -1,6 +1,5 @@
 // @ts-check
-var mongoose = require('../Schema/Schema.Mapper');
-var StudentAssessmentSchema = mongoose.model('StudentAssessment');
+var StudentAssessmentSchema = require('../Schema/StudentAssessment.Schema');
 
 module.exports = new function () {
     this.insert = (data) => {

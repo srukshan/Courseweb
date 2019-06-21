@@ -1,6 +1,5 @@
 // @ts-check
-var mongoose = require('../Schema/Schema.Mapper');
-var UserSchema = mongoose.model('User');
+var UserSchema = require('../Schema/User.Schema')
 
 // Required to implement findByToken(key) function
 

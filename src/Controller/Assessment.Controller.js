@@ -1,6 +1,5 @@
 // @ts-check
-const mongoose = require('../Schema/Schema.Mapper');
-const AssessmentSchema = mongoose.model('Assessment');
+const AssessmentSchema = require('../Schema/Assessment.Schema')
 const UserController = require('./User.Controller')
 const CourseController = require('./Course.Controller')
 

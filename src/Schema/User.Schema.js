@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt')
 
 const UserSchema = new Schema({
     username: {
@@ -29,4 +30,36 @@ const UserSchema = new Schema({
     dept: Number,
     regDate: Date
 });
-module.exports = UserSchema
+
+// hash password before saving
+userSchema.pre('save', function (next) {
+    var self = this;
+    if (!self.isModified('password')) {
+        return next();
+    };
+    bcrypt.genSalt(5, function (err, salt) {
+        if (err) {
+            return next(err);
+        }
+        bcrypt.hash(self.password, salt, null, function (err, hash) {
+            if (err) {
+                return next(err);
+            }
+            self.password = hash;
+            next();
+        });
+    });
+
+});
+
+// password verification
+userSchema.methods.verifyPassword = function (password, callback) {
+    bcrypt.compare(password, this.password, function (err, match) {
+        if (err) {
+            return callback(err);
+        }
+        callback(null, match);
+    })
+}
+
+module.exports = mongoose.model('User', UserSchema)

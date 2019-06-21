@@ -9,4 +9,4 @@ const DepartmentSchema = new Schema({
     }
 })
 
-module.exports = DepartmentSchema
+module.exports = mongoose.model('Department', DepartmentSchema)

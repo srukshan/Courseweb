@@ -11,4 +11,4 @@ const UserCourseSchema = new Schema({
         require: true,
     }
 });
-module.exports = UserCourseSchema
+module.exports = mongoose.model('UserCourse', UserCourseSchema)

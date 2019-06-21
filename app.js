@@ -1,23 +1,30 @@
 // @ts-check
-const Bundler = require('parcel-bundler');
 const express = require('express');
-const Routes = require("./Routes");
-const ClientRoutes = require("./ClientRoutes");
-
-const bundler = new Bundler('./public/static/index.html', {});
+const RestApp = require("./RestApp");
+const ClientApp = require("./ClientApp");
+const mongoose = require('mongoose');
 
 const app = express();
 
 const port = 3000;
+const db = 'courseweb'
 
-app.use('/api', Routes);
-app.use(bundler.middleware());
-app.use('/', ClientRoutes);
+mongoose.connect('mongodb://127.0.0.1:27017/' + db, err => {
+    if (err) {
+        console.log(err);
+        process.exit(-1);
+    }
+});
+mongoose.Promise = global.Promise;
+
+app.use('/api', RestApp);
+
+app.use('/', ClientApp);
 
 app.listen(port, err => {
     if (err) {
         console.error(err);
-        return;
+        process.exit(-1);
     }
 
     console.log(`Application is running on port ${port}`);

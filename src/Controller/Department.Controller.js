@@ -1,6 +1,5 @@
 // @ts-check
-var mongoose = require('../Schema/Schema.Mapper');
-var DepartmentSchema = mongoose.model('Department');
+var DepartmentSchema = require('../Schema/Department.Schema');
 
 module.exports = new function () {
     this.insert = (data) => {

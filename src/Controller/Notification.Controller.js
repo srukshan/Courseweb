@@ -1,6 +1,5 @@
 // @ts-check
-var mongoose = require('../Schema/Schema.Mapper');
-var NotificationSchema = mongoose.model('Notification');
+var NotificationSchema = require('../Schema/Notification.Schema');
 
 module.exports = new function () {
     this.insert = (data) => {

@@ -1,6 +1,5 @@
 // @ts-check
-var mongoose = require('../Schema/Schema.Mapper');
-var CourseSchema = mongoose.model('Course');
+var CourseSchema = require('../Schema/Course.Schema');
 
 // End points                   Request     Body            Authentication
 // ------------------------------------------------------------------------------------

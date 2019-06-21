@@ -1,6 +1,5 @@
 // @ts-check
-var mongoose = require('../Schema/Schema.Mapper');
-var UserCourseSchema = mongoose.model('UserCourse');
+var UserCourseSchema = require('../Schema/UserCourse.Schema');
 
 module.exports = new function () {
     this.insert = (data) => {

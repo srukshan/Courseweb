@@ -28,4 +28,4 @@ const AssessmentSchema = new Schema({
         require: true
     }
 });
-module.exports = AssessmentSchema
+module.exports = mongoose.model('Assessment', AssessmentSchema)
