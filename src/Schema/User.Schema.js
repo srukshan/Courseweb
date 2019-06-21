@@ -32,7 +32,7 @@ const UserSchema = new Schema({
 });
 
 // hash password before saving
-userSchema.pre('save', function (next) {
+UserSchema.pre('save', function (next) {
     var self = this;
     if (!self.isModified('password')) {
         return next();
@@ -53,12 +53,12 @@ userSchema.pre('save', function (next) {
 });
 
 // password verification
-userSchema.methods.verifyPassword = function (password, callback) {
-    bcrypt.compare(password, this.password, function (err, match) {
+UserSchema.methods.verifyPassword = function (password, callback) {
+    return bcrypt.compare(password, this.password, function (err, match) {
         if (err) {
             return callback(err);
         }
-        callback(null, match);
+        return callback(null, match);
     })
 }
 
