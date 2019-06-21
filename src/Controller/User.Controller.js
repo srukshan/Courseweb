@@ -92,4 +92,34 @@ module.exports = new function () {
             })
         })
     }
+    this.authenticate = (req, res) => {
+        UserSchema.findOne({
+            username: req.body.username
+        }, (err, user) => {
+            if (err) {
+                throw err
+            }
+            if (!user) {
+                res.status(403).send({
+                    success: false,
+                    msg: 'Authentication failed, User not found'
+                });
+            } else {
+                user.verifyPassword(req.body.password, (err, match) => {
+                    if (match && !err) {
+                        res.json({
+                            success: true
+                        });
+                        return done(null, user)
+
+                    } else {
+                        return res.status(403).send({
+                            success: false,
+                            msg: 'Authenticaton failed, wrong password.'
+                        });
+                    }
+                })
+            }
+        })
+    }
 }
