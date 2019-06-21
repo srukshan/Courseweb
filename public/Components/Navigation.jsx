@@ -1,22 +1,37 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-export default class Navigation extends Component {
-    render() {
-        return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-primary text-light">
-                <a className="navbar-brand" href="#">Noted</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+class Navigation extends Component {
+  render() {
+    return (
+      // <Router>
+        <ul class="list-group">
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        )
-    }
+          <Link to={"/home"}>
+            <li class="list-group-item">Home</li>
+          </Link>
+
+          <Link to={"/notify"}>
+            <li class="list-group-item ">Notification</li>
+          </Link>
+
+          <Link to={"/courses"}>
+            <li class="list-group-item ">Courses</li>
+          </Link>
+
+          <Link to={"/mycourses"}>
+            <li class="list-group-item ">My Courses</li>
+          </Link>
+
+          <li class="list-group-item">Second item</li>
+          <li class="list-group-item">Third item</li>
+          <li class="list-group-item">Active item</li>
+          <li class="list-group-item">Second item</li>
+          <li class="list-group-item">My Profile</li>
+        </ul>
+        
+    );
+  }
 }
+
+export default Navigation;
