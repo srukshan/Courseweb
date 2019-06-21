@@ -1,6 +1,8 @@
-var express     = require('express');
-var router      = express.Router();
-var Controller  = require('../Controller/Note.Controller');
+var express         = require('express');
+var router          = express.Router();
+var Controller      = require('../Controller/Note.Controller');
+
+
 
 router.get('/', (req, res) => {
     Controller.getAll().then(data => {
