@@ -8,8 +8,16 @@ class Header extends Component {
   render() {
     return (
       <div className="container">
-        <div class="d-flex justify-content-center" style={divStyle}>
-            <h1>My Courses</h1>
+        <div class="d-flex justify-content-between  mb-3">
+          <div class="p-2" />
+          <div class="p-2">
+            <h1>Course Island</h1>
+          </div>
+          <div class="p-2 ">
+            <span class="badge badge-dark">
+              <h6>LogIn</h6>
+            </span>
+          </div>
         </div>
       </div>
     );
