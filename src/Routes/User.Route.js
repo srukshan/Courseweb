@@ -26,6 +26,7 @@ router
       .catch(err => res.status(err.status).send(err.message));
   })
   .get(auth.isAuthenticated, auth.permit('admin'), (req, res) => {
+    console.log(req.user);
     controller
       .getAll()
       .then(data => res.status(data.status).json(data.data))
