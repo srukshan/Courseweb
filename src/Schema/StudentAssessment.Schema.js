@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const user = require('./User.Schema')
+const assessment = require('./Assessment.Schema')
 
 const StudentAssessmentSchema = new Schema({
     fileName: {
@@ -16,10 +18,12 @@ const StudentAssessmentSchema = new Schema({
     },
     userId: {
         type: Schema.Types.ObjectId,
+        ref: 'user',
         require: true
     },
     assessmentId: {
         type: Schema.Types.ObjectId,
+        ref: 'assessment',
         require: true
     }
 });

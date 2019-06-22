@@ -7,13 +7,11 @@ const CourseSchema = new Schema({
         require: true,
         unique: true
     },
-    userId: {
-        type: Schema.Types.ObjectId,
-        require: true
-    },
+
     accept: {
         type: Boolean,
         default: false
     }
 });
+
 module.exports = mongoose.model('Course', CourseSchema)
