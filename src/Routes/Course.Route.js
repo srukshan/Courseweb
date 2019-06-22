@@ -20,8 +20,7 @@ router
   });
 router
   .route("/accept/:id")
-  .all(auth.isAuthenticated, auth.permit('instructor'))
-  .put((req, res) => {
+  .put(auth.isAuthenticated, auth.permit('instructor'), (req, res) => {
     controller
       .accept(req.user, req.params.id)
       .then(data => res.status(data.status).send(data.message))
@@ -38,8 +37,7 @@ router
   })
 router
   .route("/user")
-  .all(auth.isAuthenticated)
-  .get((req, res) => {
+  .get(auth.isAuthenticated, (req, res) => {
     controller
       .getByUserId(req.user._id)
       .then(data => res.status(data.status).send(data.message))

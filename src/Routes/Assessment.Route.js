@@ -1,7 +1,9 @@
+// @ts-check
 var express = require('express');
 var router = express.Router();
 var controller = require('../Controller/Assessment.Controller');
 var studentAssessmentcontroller = require('../Controller/Assessment.Controller');
+var auth = require('../Controller/Authentication.Controller')
 
 router
   .route("/")
@@ -49,7 +51,7 @@ router
   .route('/mark/')
   .post(auth.isAuthenticated, auth.permit('instructor'), (req, res) => {
     studentAssessmentcontroller
-      .addMark(req.body)
+      .addMark(req.body, req.user)
       .then(data => res.status(data.status).json(data.data))
       .catch(err => res.status(err.status).send(err.message));
   });

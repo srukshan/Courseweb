@@ -57,6 +57,9 @@ module.exports = new function () {
             })
         })
     }
+    this.addMark = (data, user) => {
+
+    }
     this.getAll = () => {
         return new Promise((resolve, reject) => {
             StudentAssessmentSchema.find().exec().then((data) => {
