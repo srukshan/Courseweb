@@ -1,6 +1,20 @@
 import React, { Component } from "react";
 
 export default class Courses extends Component {
+  constructor() {
+    super();
+    this.state = {
+      courses: []
+    };
+  }
+  componentDidMount() {
+    Axios.get("/api/course").then(data => {
+      this.setState({
+        courses: data.data
+      });
+    });
+  }
+
   render() {
     return (
       <div class="container">
@@ -10,26 +24,16 @@ export default class Courses extends Component {
           <thead>
             <tr>
               <th>Course Name </th>
-              <th>Instructor Name</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Application Frameworks</td>
-              <td>Kushira </td>
-            </tr>
-            <tr>
-              <td>Software Architecture</td>
-              <td>Chathura</td>
-            </tr>
-            <tr>
-              <td>Software Quality Management</td>
-              <td>Samantha</td>
-            </tr>
-            <tr>
-              <td>Distributed System</td>
-              <td>Darshana</td>
-            </tr>
+            {this.state.courses.map(cour => {
+              return (
+                <tr >
+                  <td>{cour.name}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
