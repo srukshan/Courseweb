@@ -15,6 +15,8 @@ import asmList from "./Assignments/Assignments";
 import addStd from "./Student/Register";
 import adduser from "./AddAdmin";
 
+import Login from "./Login";
+
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
