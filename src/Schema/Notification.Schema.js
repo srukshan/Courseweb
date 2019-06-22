@@ -17,6 +17,9 @@ const NotificationSchema = new Schema({
     timeStamp: {
         type: Date,
         required: true
+    },
+    url: {
+        type: String
     }
 })
 
