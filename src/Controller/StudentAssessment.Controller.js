@@ -1,13 +1,29 @@
 // @ts-check
 var StudentAssessmentSchema = require('../Schema/StudentAssessment.Schema');
+var AssessmentSchema = require('../Schema/Assessment.Schema');
+var UserSchema = require('../Schema/User.Schema');
 
 module.exports = new function () {
     this.insert = (data) => {
         return new Promise((resolve, reject) => {
+            AssessmentSchema.findById(data.assessmentId).exec().catch(err => {
+                reject({
+                    status: 500,
+                    message: err
+                })
+            })
+
+            UserSchema.findById(data.userId).exec().catch(err => {
+                reject({
+                    status: 500,
+                    message: err
+                })
+            })
+
             var StudentAssessment = new StudentAssessmentSchema({
-                fileName: data.fileName,
-                mark: data.mark,
-                submissionDate: data.submissionDate,
+                fileId: data.fileId,
+                mark: 0,
+                submissionDate: new Date(),
                 userId: data.userId,
                 assessmentId: data.assessmentId
             })
@@ -40,6 +56,9 @@ module.exports = new function () {
                 })
             })
         })
+    }
+    this.addMark = (data, user) => {
+
     }
     this.getAll = () => {
         return new Promise((resolve, reject) => {

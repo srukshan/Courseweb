@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const controller = require("../Controller/User.Controller");
+const auth = require('../Controller/Authentication.Controller')
 
 router
   .route("/")
@@ -9,7 +10,7 @@ router
       .then(data => res.status(data.status).send(data.message))
       .catch(err => res.status(err.status).send(err.message));
   })
-  .get((req, res) => {
+  .get(auth.isAuthenticated, auth.permit('admin'), (req, res) => {
     controller
       .getAll()
       .then(data => res.status(data.status).json(data.data))

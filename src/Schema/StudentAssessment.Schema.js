@@ -4,8 +4,8 @@ const user = require('./User.Schema')
 const assessment = require('./Assessment.Schema')
 
 const StudentAssessmentSchema = new Schema({
-    fileName: {
-        type: String,
+    fileId: {
+        type: Schema.Types.ObjectId,
         require: true
     },
     mark: {
