@@ -1,13 +1,22 @@
-const Express = require("express");
-const app = Express();
-const BodyParser = require("body-parser");
-const NoteRoute = require('./src/Routes/Note.Route');
+const Express = require("express")
+const app = Express()
+const BodyParser = require("body-parser")
+const ClientRoute = require('./src/Routes/Client.Route')
+const UserRoute = require('./src/Routes/User.Route')
+const CourseRoute = require('./src/Routes/Course.Route')
+const AssessmentRoute = require('./src/Routes/Assessment.Route')
+const Passport = require('passport')
 
 app.use(BodyParser.urlencoded({
     extended: false
 }));
 app.use(BodyParser.json());
 
-app.use('/notes/', NoteRoute);
+app.use(Passport.initialize())
+
+app.use('/clients/', ClientRoute);
+app.use('/users/', UserRoute);
+app.use('/courses/', CourseRoute);
+app.use('/assessments/', AssessmentRoute);
 
 module.exports = app;

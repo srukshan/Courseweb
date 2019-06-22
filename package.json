@@ -22,15 +22,22 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+<<<<<<< HEAD
+=======
+    "base-64": "^0.1.0",
+>>>>>>> e22c63c7fe414749f1c2204bd7b20b008f20658e
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "express": "^4.17.1",
+    "express-session": "^1.16.2",
     "jquery": ">=3.4.0",
     "mongoose": "^5.5.11",
     "node-mailjet": "^3.3.1",
     "oauth2orize": "^1.11.0",
     "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
     "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -10,7 +10,7 @@ const UserSchema = new Schema({
         unique: true
     },
     role: {
-        type: Number,
+        type: String,
         require: true
     },
     fname: {
@@ -27,38 +27,41 @@ const UserSchema = new Schema({
         type: String,
         require: true
     },
-    dept: Number,
     regDate: Date
 });
 
 // hash password before saving
-userSchema.pre('save', function (next) {
+UserSchema.pre('save', function (next) {
+    console.info('came to pre save')
     var self = this;
     if (!self.isModified('password')) {
         return next();
     };
     bcrypt.genSalt(5, function (err, salt) {
+        console.log("Come!!!");
         if (err) {
+            console.log(err);
             return next(err);
         }
-        bcrypt.hash(self.password, salt, null, function (err, hash) {
-            if (err) {
-                return next(err);
-            }
-            self.password = hash;
-            next();
-        });
+        bcrypt.hash(self.password, salt, null).then(hash => {
+            self.password = hash
+            next()
+        }).catch(err => {
+            console.log(err)
+            next(err)
+        })
     });
 
+    console.info('exit pre save')
 });
 
 // password verification
-userSchema.methods.verifyPassword = function (password, callback) {
-    bcrypt.compare(password, this.password, function (err, match) {
+UserSchema.methods.verifyPassword = function (password, callback) {
+    return bcrypt.compare(password, this.password, function (err, match) {
         if (err) {
             return callback(err);
         }
-        callback(null, match);
+        return callback(null, match);
     })
 }
 

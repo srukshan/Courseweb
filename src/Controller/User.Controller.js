@@ -6,7 +6,7 @@ var UserSchema = require('../Schema/User.Schema')
 module.exports = new function () {
     this.insert = (data) => {
         return new Promise((resolve, reject) => {
-            var User = new UserSchema({
+            const User = new UserSchema({
                 username: data.username,
                 role: data.role,
                 fname: data.fname,
@@ -14,15 +14,17 @@ module.exports = new function () {
                 telno: data.telno,
                 email: data.email,
                 password: data.password,
-                dept: data.dept,
-                regDate: data.regDate
+                //regDate: new Date()
             })
+            console.info('before save'+ User.toString())
             User.save().then(() => {
+                console.info('save success')
                 resolve({
                     status: 200,
                     message: "Added new User"
                 })
             }).catch(err => {
+                console.info('save fail')
                 reject({
                     status: 500,
                     message: `Error:- ${err}`
@@ -90,6 +92,36 @@ module.exports = new function () {
                     message: `Error:- ${err}`
                 })
             })
+        })
+    }
+    this.authenticate = (req, res) => {
+        UserSchema.findOne({
+            username: req.body.username
+        }, (err, user) => {
+            if (err) {
+                throw err
+            }
+            if (!user) {
+                res.status(403).send({
+                    success: false,
+                    msg: 'Authentication failed, User not found'
+                });
+            } else {
+                user.verifyPassword(req.body.password, (err, match) => {
+                    if (match && !err) {
+                        res.json({
+                            success: true
+                        });
+                        return done(null, user)
+
+                    } else {
+                        return res.status(403).send({
+                            success: false,
+                            msg: 'Authenticaton failed, wrong password.'
+                        });
+                    }
+                })
+            }
         })
     }
 }

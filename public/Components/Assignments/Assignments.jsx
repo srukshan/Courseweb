@@ -1,6 +1,22 @@
 import React, { Component } from "react";
+import Axios from "axios";
 
 export default class Assignments extends Component {
+  constructor() {
+    super();
+    this.state = {
+      assesments: []
+    };
+  }
+
+  componentDidMount() {
+    Axios.get("/api/assignment").then(data => {
+      this.setState({
+        assesments: data.data
+      });
+    });
+  }
+
   render() {
     return (
       <div class="container">
@@ -14,22 +30,14 @@ export default class Assignments extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Assignment 01</td>
-              <td>2019 - 12 - 21 00:00:00 </td>
-            </tr>
-            <tr>
-              <td>Assignment 02</td>
-              <td>2019 - 12 - 21 00:00:00 </td>
-            </tr>
-            <tr>
-              <td>Assignment 03</td>
-              <td>2019 - 12 - 21 00:00:00 </td>
-            </tr>
-            <tr>
-              <td>Assignment 04</td>
-              <td>2019 - 12 - 21 00:00:00 </td>
-            </tr>
+            {this.state.assesments.map(asses => {
+              return (
+                <tr key={asses._id}>
+                  <td>{asses.name}</td>
+                  <td>{asses.dueDate}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

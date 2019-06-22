@@ -12,6 +12,9 @@ import myCourse from "./Student/StudentCourses";
 import courseLes from "./Student/StudentLessons";
 import asmList from "./Assignments/Assignments";
 
+import addStd from "./Student/Register";
+import adduser from "./AddAdmin";
+
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -34,6 +37,8 @@ export default class App extends Component {
                 <Route path="/mycourses" exact  component={myCourse} /> 
                 <Route path="/stcourse" exact  component={courseLes} />  
                 <Route path="/asgList" exact  component={asmList} />  
+                <Route path="/studentreg" exact  component={addStd} />  
+                <Route path="/adduser" exact  component={adduser} />  
               </Switch>
             </div>
           </div>
