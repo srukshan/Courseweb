@@ -2,10 +2,15 @@
 var express = require('express');
 var router = express.Router();
 var controller = require('../Controller/Assessment.Controller');
+<<<<<<< HEAD
 var studentAssessmentcontroller = require('../Controller/Assessment.Controller');
 
 var auth = require('../Controller/Authentication.Controller');
 
+=======
+var studentAssessmentcontroller = require('../Controller/StudentAssessment.Controller');
+var auth = require('../Controller/Authentication.Controller');
+>>>>>>> abbeca01adc6ea0b31a7c0d83768b4bb35fca48f
 
 router
   .route("/")

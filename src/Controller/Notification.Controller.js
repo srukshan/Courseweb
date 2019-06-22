@@ -1,5 +1,6 @@
 // @ts-check
 var NotificationSchema = require('../Schema/Notification.Schema');
+var EmailService = require('../Service/Email.Service')
 
 module.exports = new function () {
     this.insert = (data) => {
@@ -21,6 +22,9 @@ module.exports = new function () {
                     message: `Error:- ${err}`
                 })
             })
+            if(data.email){
+                EmailService.send(data.to, data.content)
+            }
         })
     }
     this.update = (id, data) => {

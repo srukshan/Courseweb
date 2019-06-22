@@ -1,5 +1,6 @@
 // @ts-check
 var UserSchema = require('../Schema/User.Schema')
+var NotificationController = require('./Notification.Controller')
 
 // Required to implement findByToken(key) function
 
@@ -17,8 +18,18 @@ module.exports = new function () {
                 //regDate: new Date()
             })
             console.info('before save'+ User.toString())
-            User.save().then(() => {
+            User.save().then(user => {
                 console.info('save success')
+
+                NotificationController.insert({
+                    userIds: [user._id],
+                    title: 'Account Created',
+                    content: 'Greeting! Your account has been created Successfully',
+                    timeStamp: new Date(),
+                    email: true,
+                    to: user.get('email')
+                })
+
                 resolve({
                     status: 200,
                     message: "Added new User"

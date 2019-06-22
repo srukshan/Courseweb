@@ -6,13 +6,11 @@ const course = require('./Course.Schema')
 const UserCourseSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
-        ref: 'user',
-        require: true,
+        ref: 'user'
     },
     courseId: {
         type: Schema.Types.ObjectId,
-        ref : 'course',
-        require: true,
+        ref : 'course'
     }
     
 });

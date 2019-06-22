@@ -2,11 +2,27 @@
 const AssessmentSchema = require('../Schema/Assessment.Schema')
 const UserController = require('./User.Controller')
 const CourseController = require('./Course.Controller')
-
+const NotificationController = require('./Notification.Controller')
+const UserCourseController = require('./UserCourse.Controller')
 // Required to check the references whether they exist before inserting or updating
 //    1. Assessment - Done
 //    2. Course - Done
 // Set createdDate to Date.now() - Done
+
+async function notifyStudents(name, type, dueDate, courseId){
+    await UserCourseController.getAll({ courseId : courseId }).then(async ucourses => {
+        let userIds = []
+        ucourses.forEach(ucourse => {
+            userIds.push(ucourse.userId)
+        });
+        await NotificationController.insert({
+            userIds: userIds,
+            title: type + ' Created',
+            content: 'Hi, A ' + type + ' was created due on ' + dueDate,
+            timeStamp: new Date()
+        })
+    })
+}
 
 module.exports = new function () {
     this.insert = (data) => {
@@ -37,6 +53,7 @@ module.exports = new function () {
                 courseId: data.courseId
             })
             Assessment.save().then(() => {
+                notifyStudents(data.name, data.type, data.dueDate, data.courseId)
                 resolve({
                     status: 200,
                     message: "Added new Assessment"
