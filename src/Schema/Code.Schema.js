@@ -1,24 +1,23 @@
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ClientSchema = new Schema({
-    name: {
-        type: String,
-        unique: true,
-        required: true
-    },
-    id: {
+const CodeSchema = new Schema({
+    value: {
         type: String,
         required: true
     },
-    secret: {
+    redirectUri: {
         type: String,
         required: true
     },
     userId: {
         type: String,
         required: true
+    },
+    clientId: {
+        type: String,
+        required: true
     }
 })
 
-module.exports = mongoose.model('Client', ClientSchema)
+module.exports = mongoose.model('Code', CodeSchema)
