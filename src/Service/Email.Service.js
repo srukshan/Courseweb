@@ -36,3 +36,5 @@ const EmailService = new function() {
         })
     }
 }
+
+module.exports = EmailService

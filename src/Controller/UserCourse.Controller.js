@@ -38,9 +38,9 @@ module.exports = new function () {
             })
         })
     }
-    this.getAll = () => {
+    this.getAll = (filter = {}) => {
         return new Promise((resolve, reject) => {
-            UserCourseSchema.find().exec().then((data) => {
+            UserCourseSchema.find(filter).exec().then((data) => {
                 resolve({
                     status: 200,
                     data: data
