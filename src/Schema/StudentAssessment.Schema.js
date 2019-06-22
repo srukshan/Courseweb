@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const StudentAssessmentSchema = new Schema({
-    fileName: {
-        type: String,
+    fileId: {
+        type: Schema.Types.ObjectId,
         require: true
     },
     mark: {

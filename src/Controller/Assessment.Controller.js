@@ -96,6 +96,58 @@ module.exports = new function () {
             })
         })
     }
+    this.getByCourseId = (id) => {
+        return new Promise((resolve, reject) => {
+            AssessmentSchema.find({
+                courseId: id
+            }).exec().then(Assessments => {
+                resolve({
+                    status: 200,
+                    data: Assessments
+                })
+            }).catch(err => {
+                reject({
+                    status: 500,
+                    message: `Error:- ${err}`
+                })
+            })
+        })
+    }
+    this.getByCourseUserId = (data) => {
+        return new Promise((resolve, reject) => {
+            AssessmentSchema.find({
+                userId: data.userId,
+                courseId: data.courseId
+            }).exec().then(Assessments => {
+                resolve({
+                    status: 200,
+                    data: Assessments
+                })
+            }).catch(err => {
+                reject({
+                    status: 500,
+                    message: `Error:- ${err}`
+                })
+            })
+        })
+    }
+    this.getByUserId = (id) => {
+        return new Promise((resolve, reject) => {
+            AssessmentSchema.find({
+                userId: id
+            }).exec().then(Assessments => {
+                resolve({
+                    status: 200,
+                    data: Assessments
+                })
+            }).catch(err => {
+                reject({
+                    status: 500,
+                    message: `Error:- ${err}`
+                })
+            })
+        })
+    }
     this.delete = (id) => {
         return new Promise((resolve, reject) => {
             AssessmentSchema.findByIdAndDelete(id).exec().then(() => {
