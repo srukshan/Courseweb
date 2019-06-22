@@ -58,7 +58,24 @@ module.exports = new function () {
         })
     }
     this.addMark = (data, user) => {
-
+        return new Promise((res, rej) => {
+            StudentAssessmentSchema.findOne({
+                userId: data.userId,
+                assessmentId: data.assessmentId
+            }).exec().then(ass => {
+                ass.set('mark', data.mark).save().then(data => {
+                    res({
+                        status: 200,
+                        data: data
+                    })
+                }).catch(err => {
+                    rej({
+                        status: 500,
+                        message: err
+                    })
+                })
+            })
+        })
     }
     this.getAll = () => {
         return new Promise((resolve, reject) => {
