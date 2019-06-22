@@ -38,16 +38,18 @@ UserSchema.pre('save', function (next) {
         return next();
     };
     bcrypt.genSalt(5, function (err, salt) {
+        console.log("Come!!!");
         if (err) {
+            console.log(err);
             return next(err);
         }
-        bcrypt.hash(self.password, salt, null, function (err, hash) {
-            if (err) {
-                return next(err);
-            }
-            self.password = hash;
-            next();
-        });
+        bcrypt.hash(self.password, salt, null).then(hash => {
+            self.password = hash
+            next()
+        }).catch(err => {
+            console.log(err)
+            next(err)
+        })
     });
 
     console.info('exit pre save')

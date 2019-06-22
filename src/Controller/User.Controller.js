@@ -6,7 +6,7 @@ var UserSchema = require('../Schema/User.Schema')
 module.exports = new function () {
     this.insert = (data) => {
         return new Promise((resolve, reject) => {
-            var User = new UserSchema({
+            const User = new UserSchema({
                 username: data.username,
                 role: data.role,
                 fname: data.fname,
@@ -14,9 +14,9 @@ module.exports = new function () {
                 telno: data.telno,
                 email: data.email,
                 password: data.password,
-                regDate: new Date()
+                //regDate: new Date()
             })
-            console.info('before save')
+            console.info('before save'+ User.toString())
             User.save().then(() => {
                 console.info('save success')
                 resolve({
