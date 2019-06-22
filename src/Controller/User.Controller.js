@@ -14,15 +14,17 @@ module.exports = new function () {
                 telno: data.telno,
                 email: data.email,
                 password: data.password,
-                dept: data.dept,
-                regDate: data.regDate
+                regDate: new Date()
             })
+            console.info('before save')
             User.save().then(() => {
+                console.info('save success')
                 resolve({
                     status: 200,
                     message: "Added new User"
                 })
             }).catch(err => {
+                console.info('save fail')
                 reject({
                     status: 500,
                     message: `Error:- ${err}`

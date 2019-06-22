@@ -27,12 +27,12 @@ const UserSchema = new Schema({
         type: String,
         require: true
     },
-    dept: Number,
     regDate: Date
 });
 
 // hash password before saving
 UserSchema.pre('save', function (next) {
+    console.info('came to pre save')
     var self = this;
     if (!self.isModified('password')) {
         return next();
@@ -50,6 +50,7 @@ UserSchema.pre('save', function (next) {
         });
     });
 
+    console.info('exit pre save')
 });
 
 // password verification
