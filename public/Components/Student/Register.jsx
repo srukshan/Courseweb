@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Axios from "axios";
 
-class AddAdmin extends Component {
+class Register extends Component {
   constructor() {
     super();
     this.state = {
       username: "",
-      role: "",
+      role: "student",
       fname: "",
       lname: "",
       password: ""
@@ -23,7 +23,7 @@ class AddAdmin extends Component {
       fname: this.state.fname,
       lname: this.state.lname,
       password: this.state.password,
-      role: this.state.role
+      role: "studuent"
     };
     console.log(JSON.stringify(obj));
 
@@ -32,13 +32,13 @@ class AddAdmin extends Component {
         console.log("Success", data.data);
       })
       .catch(err => {
-        console.log("fail" + err);
+        console.log("Success" + err);
       });
 
     this.setState({
       username: "",
       fname: "",
-      role: "",
+      role: "student",
       lname: "",
       password: ""
     });
@@ -59,7 +59,7 @@ class AddAdmin extends Component {
             <label>Username:</label>
             <input
               type="text"
-              className="form-control"
+              class="form-control"
               placeholder="Enter username"
               onChange={this.handleInputChange}
               value={this.state.username}
@@ -71,7 +71,7 @@ class AddAdmin extends Component {
             <label>First Name:</label>
             <input
               type="text"
-              className="form-control"
+              class="form-control"
               placeholder="Enter first name"
               onChange={this.handleInputChange}
               value={this.state.fname}
@@ -82,44 +82,18 @@ class AddAdmin extends Component {
             <label>Last Name:</label>
             <input
               type="text"
-              className="form-control"
+              class="form-control"
               placeholder="Enter last name"
               onChange={this.handleInputChange}
               value={this.state.lname}
               name="lname"
             />
           </div>
-
-          <div className="form-check">
-            <label className="form-check-label">
-              <input
-                type="radio"
-                className="form-check-input"
-                onChange={this.handleInputChange}
-                value="admin"
-                name="role"
-              />
-              Admin
-            </label>
-          </div>
-
-          <div className="form-check">
-            <label className="form-check-label">
-              <input
-                type="radio"
-                className="form-check-input"
-                onChange={this.handleInputChange}
-                value="instructor"
-                name="role"
-              />
-              Instructor
-            </label>
-          </div>
           <div className="form-group">
             <label>Password:</label>
             <input
               type="password"
-              className="form-control"
+              class="form-control"
               placeholder="Enter password"
               onChange={this.handleInputChange}
               value={this.state.password}
@@ -135,4 +109,4 @@ class AddAdmin extends Component {
   }
 }
 
-export default AddAdmin;
+export default Register;
