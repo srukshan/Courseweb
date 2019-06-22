@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var controller = require('../Controller/Assessment.Controller');
 var studentAssessmentcontroller = require('../Controller/Assessment.Controller');
+var auth = require('../Controller/Authentication.Controller');
 
 router
   .route("/")
