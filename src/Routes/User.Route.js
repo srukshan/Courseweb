@@ -12,5 +12,4 @@ router.route('/')
             .then(data => res.status(data.status).json(data.data))
             .catch(err => res.status(err.status).send(err.message))
     })
-
 module.exports = router

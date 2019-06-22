@@ -1,6 +1,6 @@
 // @ts-check
 const express = require('express');
-const RestApp = require("./RestApp");
+//const RestApp = require("./RestApp");
 const ClientApp = require("./ClientApp");
 const mongoose = require('mongoose');
 
@@ -17,7 +17,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/' + db, err => {
 });
 mongoose.Promise = global.Promise;
 
-app.use('/api', RestApp);
+// app.use('/api', RestApp);
 
 app.use('/', ClientApp);
 
