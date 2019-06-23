@@ -8,14 +8,9 @@ export default class Courses extends Component {
       courses: []
     };
   }
-<<<<<<< HEAD
-  componentDidMount() {
-    Axios.get("/api/course").then(data => {
-=======
 
   componentDidMount() {
     Axios.get("/api/courses").then(data => {
->>>>>>> e22c63c7fe414749f1c2204bd7b20b008f20658e
       this.setState({
         courses: data.data
       });
@@ -34,17 +29,10 @@ export default class Courses extends Component {
             </tr>
           </thead>
           <tbody>
-<<<<<<< HEAD
-            {this.state.courses.map(cour => {
-              return (
-                <tr >
-                  <td>{cour.name}</td>
-=======
             {this.state.courses.map(cous => {
               return (
                 <tr key={cous._id}>
                   <td>{cous.name}</td>
->>>>>>> e22c63c7fe414749f1c2204bd7b20b008f20658e
                 </tr>
               );
             })}

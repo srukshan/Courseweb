@@ -15,6 +15,8 @@ import asmList from "./Assignments/Assignments";
 import addStd from "./Student/Register";
 import adduser from "./AddAdmin";
 
+import addCourse from "./AddCourse";
+
 import Login from "./Login";
 
 
@@ -40,7 +42,8 @@ export default class App extends Component {
                 <Route path="/stcourse" exact  component={courseLes} />  
                 <Route path="/asgList" exact  component={asmList} />  
                 <Route path="/studentreg" exact  component={addStd} />  
-                <Route path="/adduser" exact  component={adduser} />  
+                <Route path="/adduser" exact  component={adduser} />
+                <Route path="/addCourse" exact  component={addCourse} />  
               </Switch>
             </div>
           </div>
